@@ -10,7 +10,7 @@
 		E4EF288921F9E86E00325B07 /* AwesomeAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EF287F21F9E86D00325B07 /* AwesomeAudio.framework */; };
 		E4EF288E21F9E86E00325B07 /* AwesomeAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF288D21F9E86E00325B07 /* AwesomeAudioTests.swift */; };
 		E4EF289021F9E86E00325B07 /* AwesomeAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = E4EF288221F9E86D00325B07 /* AwesomeAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4EF289C21F9E90900325B07 /* AwesomeAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF289B21F9E90900325B07 /* AwesomeAudioPlayer.swift */; };
+		E4EF289E21F9F82800325B07 /* AAPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF289D21F9F82800325B07 /* AAPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 		E4EF288821F9E86E00325B07 /* AwesomeAudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeAudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4EF288D21F9E86E00325B07 /* AwesomeAudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeAudioTests.swift; sourceTree = "<group>"; };
 		E4EF288F21F9E86E00325B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4EF289B21F9E90900325B07 /* AwesomeAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeAudioPlayer.swift; sourceTree = "<group>"; };
+		E4EF289D21F9F82800325B07 /* AAPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			children = (
 				E4EF288221F9E86D00325B07 /* AwesomeAudio.h */,
 				E4EF288321F9E86D00325B07 /* Info.plist */,
-				E4EF289B21F9E90900325B07 /* AwesomeAudioPlayer.swift */,
+				E4EF289D21F9F82800325B07 /* AAPlayer.swift */,
 			);
 			path = AwesomeAudio;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4EF289C21F9E90900325B07 /* AwesomeAudioPlayer.swift in Sources */,
+				E4EF289E21F9F82800325B07 /* AAPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

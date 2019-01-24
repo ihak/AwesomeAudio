@@ -1,5 +1,5 @@
 //
-//  AwesomeAudioPlayer.swift
+//  AAPlayer.swift
 //  AwesomeAudio
 //
 //  Created by Hassan Ahmed on 24/01/2019.
@@ -7,10 +7,12 @@
 //
 
 import Foundation
+
+import Foundation
 import AVFoundation
 import MediaPlayer
 
-class AwesomeAudioPlayer: NSObject {
+class AAPlayer: NSObject {
     private var url: URL
     private var player: AVPlayer?
     private var playerItemContext = 0
