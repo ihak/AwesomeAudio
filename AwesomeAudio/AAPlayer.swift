@@ -12,19 +12,19 @@ import Foundation
 import AVFoundation
 import MediaPlayer
 
-class AAPlayer: NSObject {
+public class AAPlayer: NSObject {
     private var url: URL
     private var player: AVPlayer?
     private var playerItemContext = 0
     
-    var artist = "Artist"
-    var track = "Track Name | Title"
-    var artwork: UIImage?
+    public var artist = "Artist"
+    public var track = "Track Name | Title"
+    public var artwork: UIImage?
     
-    typealias iHAKAudioPlayerHandler = (_ player: AVPlayer?, _ playerItem: AVPlayerItem?) -> Void
+    public typealias iHAKAudioPlayerHandler = (_ player: AVPlayer?, _ playerItem: AVPlayerItem?) -> Void
     private var onStatusReadyToPlay: iHAKAudioPlayerHandler?
     
-    typealias statusFailed = (_ player: AVPlayer?, _ playerItem: AVPlayerItem?, _ error: Error?) -> Void
+    public typealias statusFailed = (_ player: AVPlayer?, _ playerItem: AVPlayerItem?, _ error: Error?) -> Void
     private var onStatusFailed: statusFailed?
     
     private var onStatusUnknown: iHAKAudioPlayerHandler?
@@ -35,7 +35,7 @@ class AAPlayer: NSObject {
     
     private var onInterruptionBegin: iHAKAudioPlayerHandler?
     
-    typealias EndInterruptionHandler = (_ player: AVPlayer?, _ playerItem: AVPlayerItem?, _ shouldResume: Bool) -> Void
+    public typealias EndInterruptionHandler = (_ player: AVPlayer?, _ playerItem: AVPlayerItem?, _ shouldResume: Bool) -> Void
     private var onInterruptionEnd: EndInterruptionHandler?
     
     private var commandCenterEnabled: Bool {
@@ -51,7 +51,7 @@ class AAPlayer: NSObject {
         }
     }
     
-    var isPlaying: Bool {
+    public var isPlaying: Bool {
         return (player!.rate > 0)
     }
     
@@ -64,7 +64,7 @@ class AAPlayer: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func setup() {
+    public func setup() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -76,14 +76,14 @@ class AAPlayer: NSObject {
         }
     }
     
-    func enableCommandMediaCenter(withArtist artist: String, track: String, artwork: UIImage?) {
+    public func enableCommandMediaCenter(withArtist artist: String, track: String, artwork: UIImage?) {
         commandCenterEnabled = true
         self.artist = artist
         self.track = track
         self.artwork = artwork
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         // Only handle observations for the playerItemContext
         guard context == &playerItemContext else {
@@ -115,7 +115,7 @@ class AAPlayer: NSObject {
         }
     }
     
-    func addObservers() {
+    private func addObservers() {
         // Add periodic observer to track progress
         let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         let minQueue = DispatchQueue.main
@@ -158,7 +158,7 @@ class AAPlayer: NSObject {
         }
     }
     
-    @objc func updateMediaCenter() {
+    @objc private func updateMediaCenter() {
         guard commandCenterEnabled else { return }
         guard let currentItem = self.player?.currentItem else { return }
         
@@ -181,17 +181,17 @@ class AAPlayer: NSObject {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
-    @objc func play() {
+    @objc public func play() {
         player?.play()
         updateMediaCenter()
     }
     
-    @objc func pause() {
+    @objc public func pause() {
         player?.pause()
         updateMediaCenter()
     }
     
-    func playpause() {
+    public func playpause() {
         guard isPlaying else {
             play()
             return
@@ -199,35 +199,35 @@ class AAPlayer: NSObject {
         pause()
     }
     
-    func seek(to time: CMTime) {
+    public func seek(to time: CMTime) {
         player?.seek(to: time)
     }
     
-    func onStatusReadyToPlay(block: @escaping iHAKAudioPlayerHandler) {
+    public func onStatusReadyToPlay(block: @escaping iHAKAudioPlayerHandler) {
         self.onStatusReadyToPlay = block
     }
     
-    func onStatusFailure(block: @escaping statusFailed) {
+    public func onStatusFailure(block: @escaping statusFailed) {
         self.onStatusFailed = block
     }
     
-    func onStatusUknown(block: @escaping iHAKAudioPlayerHandler) {
+    public func onStatusUknown(block: @escaping iHAKAudioPlayerHandler) {
         self.onStatusUnknown = block
     }
     
-    func onProgress(block: @escaping iHAKAudioPlayerHandler) {
+    public func onProgress(block: @escaping iHAKAudioPlayerHandler) {
         self.onProgress = block
     }
     
-    func onFinishedPlayback(block: @escaping iHAKAudioPlayerHandler) {
+    public func onFinishedPlayback(block: @escaping iHAKAudioPlayerHandler) {
         self.onFinishedPlayback = block
     }
     
-    func onInterruption(block: @escaping iHAKAudioPlayerHandler) {
+    public func onInterruption(block: @escaping iHAKAudioPlayerHandler) {
         self.onInterruptionBegin = block
     }
     
-    func onInterruptionResume(block: @escaping EndInterruptionHandler) {
+    public func onInterruptionResume(block: @escaping EndInterruptionHandler) {
         self.onInterruptionEnd = block
     }
 }
