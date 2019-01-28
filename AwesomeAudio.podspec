@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'AwesomeAudio'
-s.version = '0.1.2'
+s.version = '0.1.3'
 s.summary = 'Light weight audio player built on top of AVFoundation'
 s.description = <<-DESC
 Light weight audio player built using AVPlayer and AVPlayerItem of AVFoundation.

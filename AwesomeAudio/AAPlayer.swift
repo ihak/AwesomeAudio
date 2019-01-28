@@ -55,7 +55,7 @@ public class AAPlayer: NSObject {
         return (player!.rate > 0)
     }
     
-    init(url: URL) {
+    public init(url: URL) {
         self.url = url
         self.commandCenterEnabled = false
     }
