@@ -6,9 +6,8 @@
 //  Copyright © 2019 Hassan Ahmed. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-import Foundation
 import AVFoundation
 import MediaPlayer
 
